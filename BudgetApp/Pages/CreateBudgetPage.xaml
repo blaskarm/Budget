@@ -1,0 +1,178 @@
+﻿<Page x:Class="BudgetApp.Pages.CreateBudgetPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BudgetApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="600" FontFamily="Arial"
+      Title="CreateBudgetPage">
+
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+
+                    <TextBlock Text="Add Income" Foreground="#2a2a2a" FontSize="16" Padding="2"
+                               Margin="0 10" HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Type" Foreground="#404040" FontSize="12" Padding="2" Margin="20 0 10 5"/>
+                    <TextBox x:Name="typeOfIncomeTextbox" Margin="20 0 10 0" Padding="1" FontSize="12"/>
+
+                    <TextBlock Text="Amount" Foreground="#404040" FontSize="12" Padding="2" Margin="20 10 10 5"/>
+                    <TextBox x:Name="incomeAmountTextbox" PreviewTextInput="incomeAmountTextbox_PreviewTextInput"
+                             Margin="20 0 10 10" Padding="1" FontSize="12"/>
+
+                </StackPanel>
+
+                <Button x:Name="addIncomeButton" Click="addIncomeButton_Click"  Grid.Column="1" Content="Add"
+                        VerticalAlignment="Bottom" Margin="5 0 20 15" Style="{StaticResource RoundedButtonStyle}"
+                        Padding="2" Background="#0080ff"
+                        Foreground="White"
+                        Cursor="Hand"/>
+            </Grid>
+
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+
+                <ListBox x:Name="incomeListBox" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="20">
+
+                </ListBox>
+
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="removeIncomeButton" Click="removeIncomeButton_Click"  Content="Remove"
+                        Margin="20 6" Style="{StaticResource RoundedButtonStyle}"
+                        Padding="2" Background="#0080ff"
+                        Foreground="White"
+                        Cursor="Hand"/>
+                </Grid>
+
+
+            </Grid>
+
+
+        </Grid>
+
+
+        <Grid Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+
+                    <TextBlock Text="Add Expense" Foreground="#2a2a2a" FontSize="16" Padding="2" Margin="0 10"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Name" Foreground="#404040" FontSize="12" Padding="2" Margin="20 0 10 5"/>
+                    <TextBox x:Name="nameOfExpenseTextbox" Margin="20 0 10 0" Padding="1"/>
+
+                    <TextBlock Text="Amount" Foreground="#404040" FontSize="12" Padding="2" Margin="20 10 10 5"/>
+                    <TextBox x:Name="expenseAmountTextbox" PreviewTextInput="expenseAmountTextbox_PreviewTextInput"
+                             Margin="20 0 10 10" Padding="1"/>
+
+                </StackPanel>
+
+                <Button x:Name="addExpenseButton" Click="addExpenseButton_Click"  Grid.Column="1" Content="Add" VerticalAlignment="Bottom" Margin="5 0 20 15" Style="{StaticResource RoundedButtonStyle}"
+                        Padding="2" Background="#0080ff"
+                        Foreground="White"
+                        Cursor="Hand"/>
+
+
+            </Grid>
+
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+
+                <ListBox x:Name="expensesListBox" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="20">
+
+                </ListBox>
+
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="removeExpenseButton" Click="removeExpenseButton_Click"  Content="Remove"
+                            Margin="20 6" Style="{StaticResource RoundedButtonStyle}"
+                            Padding="2" Background="#0080ff"
+                            Foreground="White"
+                            Cursor="Hand"/>
+                </Grid>
+
+
+            </Grid>
+
+
+        </Grid>
+
+
+
+        <Grid Grid.Column="1" Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="saveBudgetButton" Click="saveBudgetButton_Click"  Content="Save"
+                    Style="{StaticResource RoundedButtonStyle}" Grid.Column="1" Padding="4"
+                    FontSize="12" Margin="10 10" Background="#0080ff"
+                    Foreground="White" FontFamily="Arial" Cursor="Hand"/>
+        </Grid>
+
+
+    </Grid>
+
+
+</Page>
