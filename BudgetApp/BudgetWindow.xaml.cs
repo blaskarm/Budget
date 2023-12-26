@@ -59,14 +59,14 @@ namespace BudgetApp
             settingsFrame.Visibility = Visibility.Hidden;
 
 
-            createBudgetPage = new CreateBudgetPage(user, this, homePage, settingsPage, addSavingsPage);
-            createBudgetFrame.Navigate(createBudgetPage);
-            createBudgetFrame.Visibility = Visibility.Hidden;
-
-
             editBudgetPage = new EditBudgetPage(user, currentBudget, this, homePage);
             editBudgetFrame.Navigate(editBudgetPage);
             editBudgetFrame.Visibility = Visibility.Hidden;
+
+
+            createBudgetPage = new CreateBudgetPage(user, this, homePage, settingsPage, addSavingsPage, editBudgetPage);
+            createBudgetFrame.Navigate(createBudgetPage);
+            createBudgetFrame.Visibility = Visibility.Hidden;
 
 
             myBudgetsPage = new MyBudgets(user, currentBudget, homePage, settingsPage, addSavingsPage, editBudgetPage, this);
@@ -172,6 +172,13 @@ namespace BudgetApp
             myBudgetsFrame.Visibility = Visibility.Hidden;
             settingsFrame.Visibility = Visibility.Hidden;
             editBudgetFrame.Visibility = Visibility.Hidden;
+        }
+
+        public void UpdateDataContext(User user)
+        {
+            this.user = user;
+            this.DataContext = null;
+            this.DataContext = this.user;
         }
     }
 }

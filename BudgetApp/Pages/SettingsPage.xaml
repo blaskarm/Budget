@@ -28,6 +28,16 @@
                         Foreground="White"
                         Cursor="Hand"/>
 
+            <TextBlock Text="Change Name" Foreground="#2a2a2a" FontSize="16" Padding="2" HorizontalAlignment="Center" Margin="0 20 0 20"/>
+
+            <TextBox x:Name="changeUserNameTextBox" Padding="2" Margin="40 15 40 0" FontSize="12" />
+
+            <Button x:Name="changeUserNameButton" Content="Confirm" Margin="80 30" Style="{StaticResource RoundedButtonStyle}"
+                    Click="changeUserNameButton_Click"
+                        Padding="2" Background="#0080ff"
+                        Foreground="White"
+                        Cursor="Hand"/>
+
         </StackPanel>
         
 

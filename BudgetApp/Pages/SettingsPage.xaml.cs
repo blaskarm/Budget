@@ -41,6 +41,11 @@ namespace BudgetApp.Pages
             ChangeBudgetName();
         }
 
+        private void changeUserNameButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeUserName();
+        }
+
         private void changePasswordButton_Click(object sender, RoutedEventArgs e)
         {
             ChangePassword();
@@ -56,6 +61,18 @@ namespace BudgetApp.Pages
                 homePage.UpdateCurrentBudget(currentBudget);
                 budgetWindow.currentBudget = currentBudget;
                 budgetWindow.currentBudgetText.Text = currentBudget.Name;
+            }
+        }
+
+
+        private void ChangeUserName()
+        {
+            if (changeUserNameTextBox.Text != "")
+            {
+                user.Name = changeUserNameTextBox.Text;
+                ResetTextBoxes();
+                fileManager.UpdateUser(user);
+                budgetWindow.UpdateDataContext(user);
             }
         }
 
@@ -86,6 +103,7 @@ namespace BudgetApp.Pages
         private void ResetTextBoxes()
         {
             changeBudgetNameTextBox.Text = "";
+            changeUserNameTextBox.Text = "";
             currentPasswordTextBox.Password = "";
             newPasswordTextBox.Password = "";
             confirmPasswordTextBox.Password = "";

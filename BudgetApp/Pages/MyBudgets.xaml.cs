@@ -83,8 +83,6 @@ namespace BudgetApp.Pages
             if (budgetsListbox.SelectedItem != null)
             {
                 homePage.UpdateDataContext(GetBudget());
-                //homePage.DataContext = GetBudget();
-                //homePage.UpdateCurrentBudget(GetBudget());
                 homePage.ListIncomes();
                 homePage.ListExpenses();
 

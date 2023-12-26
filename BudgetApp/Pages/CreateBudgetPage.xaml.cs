@@ -30,10 +30,11 @@ namespace BudgetApp.Pages
         HomePage homePage;
         SettingsPage settingsPage;
         AddSavingsPage addSavingsPage;
+        EditBudgetPage editBudgetPage;
 
 
         public CreateBudgetPage(User user, BudgetWindow budgetWindow, HomePage homePage, SettingsPage settingsPage,
-                                AddSavingsPage addSavingsPage)
+                                AddSavingsPage addSavingsPage, EditBudgetPage editBudgetPage)
         {
             InitializeComponent();
             this.user = user;
@@ -41,6 +42,7 @@ namespace BudgetApp.Pages
             this.homePage = homePage;
             this.settingsPage = settingsPage;
             this.addSavingsPage = addSavingsPage;
+            this.editBudgetPage = editBudgetPage;
         }
 
 
@@ -132,6 +134,7 @@ namespace BudgetApp.Pages
 
             settingsPage.UpdateCurrentBudget(budget);
             addSavingsPage.UpdateCurrentBudget(budget);
+            editBudgetPage.UpdateCurrentBudget(budget);
 
             user.budgets.Add(budget);
             fileManager.UpdateUser(user);
