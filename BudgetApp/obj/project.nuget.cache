@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QfythTDOUkTdRjToYgXSF6vDf5+LEs3flzYFquVkfO4WP97bMC+3yXs4RTKok8Sg838KtY4Pf4zTomfliUDIyw==",
+  "dgSpecHash": "6oW4JudrVr0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Emil\\source\\repos\\BudgetApp\\BudgetApp\\BudgetApp.csproj",
+  "projectFilePath": "C:\\Users\\Emil\\source\\repos\\Budget\\BudgetApp\\BudgetApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Emil\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
