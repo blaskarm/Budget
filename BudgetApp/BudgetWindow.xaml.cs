@@ -37,13 +37,13 @@ namespace BudgetApp
             this.user = user;
             this.DataContext = user;
 
-            if (!user.budgets.Any())
+            if (!user.Budgets.Any())
             {
-                user.budgets.Add(new Budget());
+                user.Budgets.Add(new Budget());
                 fileManager.UpdateUser(user);
             }
 
-            currentBudget = user.budgets[user.budgets.Count - 1];
+            currentBudget = user.Budgets[user.Budgets.Count - 1];
 
             homePage = new HomePage(user, currentBudget, this);
             homeFrame.Navigate(homePage);

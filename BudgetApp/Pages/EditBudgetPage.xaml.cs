@@ -77,7 +77,7 @@ namespace BudgetApp.Pages
         {
             if (typeOfIncomeTextBox.Text != "" && incomeAmountTextbox.Text != "")
             {
-                incomes.Add(new Income(typeOfIncomeTextBox.Text, Convert.ToInt32(incomeAmountTextbox.Text)));
+                incomes.Add(new Income{ Name = typeOfIncomeTextBox.Text, Amount = Convert.ToInt32(incomeAmountTextbox.Text) });
                 incomeListBox.Items.Add(typeOfIncomeTextBox.Text + "\t" + incomeAmountTextbox.Text + ":-");
 
                 ResetTextBoxes();
@@ -99,7 +99,7 @@ namespace BudgetApp.Pages
         {
             if (nameOfExpenseTextBox.Text != "" && expenseAmountTextbox.Text != "")
             {
-                expenses.Add(new Expense(nameOfExpenseTextBox.Text, Convert.ToInt32(expenseAmountTextbox.Text)));
+                expenses.Add(new Expense{ Name = nameOfExpenseTextBox.Text, Amount = Convert.ToInt32(expenseAmountTextbox.Text) });
                 expensesListBox.Items.Add(nameOfExpenseTextBox.Text + "\t" + expenseAmountTextbox.Text + ":-");
 
                 ResetTextBoxes();
@@ -119,8 +119,8 @@ namespace BudgetApp.Pages
 
         private void SaveBudget()
         {
-            currentBudget.incomes.Clear();
-            currentBudget.expenses.Clear();
+            currentBudget.Incomes.Clear();
+            currentBudget.Expenses.Clear();
             currentBudget.AddIncomes(incomes);
             currentBudget.AddExpenses(expenses);
             currentBudget.CalculateNetTotal();
@@ -145,7 +145,7 @@ namespace BudgetApp.Pages
         {
             incomeListBox.Items.Clear();
 
-            foreach (Income income in currentBudget.incomes)
+            foreach (Income income in currentBudget.Incomes)
             {
                 incomeListBox.Items.Add(income.Name + "\t" + income.Amount + ":-");
             }
@@ -156,7 +156,7 @@ namespace BudgetApp.Pages
         {
             expensesListBox.Items.Clear();
 
-            foreach (Expense expense in currentBudget.expenses)
+            foreach (Expense expense in currentBudget.Expenses)
             {
                 expensesListBox.Items.Add(expense.Name + "\t" + expense.Amount + ":-");
             }
@@ -165,7 +165,7 @@ namespace BudgetApp.Pages
         private void AddIncomesToClassList()
         {
             incomes.Clear();
-            foreach (Income income in currentBudget.incomes)
+            foreach (Income income in currentBudget.Incomes)
             {
                 incomes.Add(income);
             }
@@ -175,7 +175,7 @@ namespace BudgetApp.Pages
         private void AddExpensesToClassList()
         {
             expenses.Clear();
-            foreach (Expense expense in currentBudget.expenses)
+            foreach (Expense expense in currentBudget.Expenses)
             {
                 expenses.Add(expense);
             }
