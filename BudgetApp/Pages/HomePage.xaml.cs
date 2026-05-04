@@ -41,7 +41,7 @@ namespace BudgetApp.Pages
 
         private void editBudgetButton_Click(object sender, RoutedEventArgs e)
         {
-            if (user.budgets.Any())
+            if (user.Budgets.Any())
             {
                 budgetWindow.ShowEditBudgetFrame();
             }
@@ -59,7 +59,7 @@ namespace BudgetApp.Pages
         {
             incomeListbox.Items.Clear();
 
-            foreach (Income income in currentBudget.incomes)
+            foreach (Income income in currentBudget.Incomes)
             {
                 incomeListbox.Items.Add(income.Name + "\t" + income.Amount + ":-");
             }
@@ -70,7 +70,7 @@ namespace BudgetApp.Pages
         {
             expensesListbox.Items.Clear();
 
-            foreach (Expense expense in currentBudget.expenses)
+            foreach (Expense expense in currentBudget.Expenses)
             {
                 expensesListbox.Items.Add(expense.Name + "\t" + expense.Amount + ":-");
             }

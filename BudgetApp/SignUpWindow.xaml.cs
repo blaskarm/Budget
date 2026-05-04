@@ -42,7 +42,7 @@ namespace BudgetApp
                 }
                 else
                 {
-                    users.Add(new User(SignUpNameTextBox.Text, SignUpEmailTextBox.Text.ToLower(), SignUpPasswordBox.Password));
+                    users.Add(new User { Name = SignUpNameTextBox.Text, Email = SignUpEmailTextBox.Text.ToLower(), PasswordHash = SignUpPasswordBox.Password });
                     fileManager.CreateNewUser(users);
                     this.Close();
                 }

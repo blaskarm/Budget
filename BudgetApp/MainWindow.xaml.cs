@@ -1,66 +1,55 @@
 ﻿using BudgetApp.Classes;
-using Newtonsoft.Json.Bson;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace BudgetApp
+namespace BudgetApp;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+
+
+// Login Window
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    
+    List<User> users = new List<User>();
+    User? user;
+    FileManager fileManager = new FileManager();
 
-    // Login Window
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        List<User> users = new List<User>();
-        User? user;
-        FileManager fileManager = new FileManager();
+        InitializeComponent();
+        users = fileManager.ReadUsers(users);
+        LoginUsernameTextBox.Focus();
+    }
 
-        public MainWindow()
+    private void CreateAccountButton_Click(object sender, RoutedEventArgs e)
+    {
+        SignUpWindow signUpWindow = new SignUpWindow(users);
+        signUpWindow.ShowDialog();
+    }
+
+    private void LoginButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (CheckUser(out user) && user != null)
         {
-            InitializeComponent();
-            users = fileManager.ReadUsers(users);
-            LoginUsernameTextBox.Focus();
+            BudgetWindow budgetWindow = new BudgetWindow(user);
+            budgetWindow.Show();
+            this.Close();
         }
+    }
 
-        private void CreateAccountButton_Click(object sender, RoutedEventArgs e)
-        {
-            SignUpWindow signUpWindow = new SignUpWindow(users);
-            signUpWindow.ShowDialog();
-        }
+    private bool CheckUser(out User loggedInUser)
+    {
+        loggedInUser = null;
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        foreach (User user in users)
         {
-            if (CheckUser(out user) && user != null)
+            if (user.Email == LoginUsernameTextBox.Text.ToLower() && user.PasswordHash == LoginPasswordBox.Password)
             {
-                BudgetWindow budgetWindow = new BudgetWindow(user);
-                budgetWindow.Show();
-                this.Close();
+                loggedInUser = user;
+                return true;
             }
         }
-
-        private bool CheckUser(out User loggedInUser)
-        {
-            loggedInUser = null;
-
-            foreach (User user in users)
-            {
-                if (user.Email == LoginUsernameTextBox.Text.ToLower() && user.Password == LoginPasswordBox.Password)
-                {
-                    loggedInUser = user;
-                    return true;
-                }
-            }
-            return false;
-        }
+        return false;
     }
 }

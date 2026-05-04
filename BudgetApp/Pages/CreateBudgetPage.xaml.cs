@@ -78,7 +78,7 @@ namespace BudgetApp.Pages
         {
             if (typeOfIncomeTextbox.Text != "" && incomeAmountTextbox.Text != "")
             {
-                incomes.Add(new Income(typeOfIncomeTextbox.Text, Convert.ToInt32(incomeAmountTextbox.Text)));
+                incomes.Add(new Income { Name = typeOfIncomeTextbox.Text, Amount = Convert.ToInt32(incomeAmountTextbox.Text) });
                 incomeListBox.Items.Add(typeOfIncomeTextbox.Text + "\t" + incomeAmountTextbox.Text + ":-");
 
                 ResetTextBoxes();
@@ -99,7 +99,7 @@ namespace BudgetApp.Pages
         {
             if (nameOfExpenseTextbox.Text != "" && expenseAmountTextbox.Text != "")
             {
-                expenses.Add(new Expense(nameOfExpenseTextbox.Text, Convert.ToInt32(expenseAmountTextbox.Text)));
+                expenses.Add(new Expense { Name = nameOfExpenseTextbox.Text, Amount = Convert.ToInt32(expenseAmountTextbox.Text) });
                 expensesListBox.Items.Add(nameOfExpenseTextbox.Text + "\t" + expenseAmountTextbox.Text + ":-");
 
                 ResetTextBoxes();
@@ -136,7 +136,7 @@ namespace BudgetApp.Pages
             addSavingsPage.UpdateCurrentBudget(budget);
             editBudgetPage.UpdateCurrentBudget(budget);
 
-            user.budgets.Add(budget);
+            user.Budgets.Add(budget);
             fileManager.UpdateUser(user);
 
             incomeListBox.Items.Clear();

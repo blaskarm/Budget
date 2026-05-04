@@ -71,9 +71,9 @@ namespace BudgetApp.Pages
         {
             budgetsListbox.Items.Clear();
 
-            for (int i = user.budgets.Count - 1; i >= 0; i--)
+            for (int i = user.Budgets.Count - 1; i >= 0; i--)
             {
-                budgetsListbox.Items.Add(user.budgets[i]);
+                budgetsListbox.Items.Add(user.Budgets[i]);
             }
         }
 
@@ -147,9 +147,9 @@ namespace BudgetApp.Pages
                     }
                 }
 
-                user.budgets.Reverse();
-                user.budgets.RemoveAt(budgetsListbox.SelectedIndex);
-                user.budgets.Reverse();
+                user.Budgets.Reverse();
+                user.Budgets.RemoveAt(budgetsListbox.SelectedIndex);
+                user.Budgets.Reverse();
                 fileManager.UpdateUser(user);
                 budgetsListbox.Items.Remove(budgetsListbox.SelectedItem);
             }

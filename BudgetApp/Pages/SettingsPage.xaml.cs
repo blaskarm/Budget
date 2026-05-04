@@ -79,10 +79,10 @@ namespace BudgetApp.Pages
 
         private void ChangePassword()
         {
-            if (currentPasswordTextBox.Password == user.Password &&
+            if (currentPasswordTextBox.Password == user.PasswordHash &&
                 newPasswordTextBox.Password == confirmPasswordTextBox.Password)
             {
-                user.Password = newPasswordTextBox.Password;
+                user.PasswordHash = newPasswordTextBox.Password;
                 fileManager.UpdateUser(user);
                 ResetTextBoxes();
 
