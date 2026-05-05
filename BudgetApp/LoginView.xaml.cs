@@ -9,13 +9,13 @@ namespace BudgetApp;
 
 
 // Login Window
-public partial class MainWindow : Window
+public partial class LoginView : Window
 {
     List<User> users = new List<User>();
     User? user;
     FileManager fileManager = new FileManager();
 
-    public MainWindow()
+    public LoginView()
     {
         InitializeComponent();
         users = fileManager.ReadUsers(users);
