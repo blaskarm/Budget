@@ -1,82 +1,69 @@
 ﻿using BudgetApp.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace BudgetApp
+namespace BudgetApp;
+
+/// <summary>
+/// Interaction logic for SignUpWindow.xaml
+/// </summary>
+public partial class SignUpWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for SignUpWindow.xaml
-    /// </summary>
-    public partial class SignUpWindow : Window
+    FileManager fileManager = new FileManager();
+    List<User> users;
+
+    public SignUpWindow(List<User> users)
     {
-        FileManager fileManager = new FileManager();
-        List<User> users;
+        InitializeComponent();
+        SignUpNameTextBox.Focus();
+        this.users = users;
+    }
 
-        public SignUpWindow(List<User> users)
+    private void SignUpButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (SignUpPasswordBox.Password != "" && SignUpConfirmPasswordBox.Password != "" &&
+            SignUpPasswordBox.Password == SignUpConfirmPasswordBox.Password)
         {
-            InitializeComponent();
-            SignUpNameTextBox.Focus();
-            this.users = users;
-        }
-
-        private void SignUpButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (SignUpPasswordBox.Password != "" && SignUpConfirmPasswordBox.Password != "" &&
-                SignUpPasswordBox.Password == SignUpConfirmPasswordBox.Password)
+            if (UserExists())
             {
-                if (UserExists())
-                {
-                    MessageBox.Show("Email already exists");
-                    ResetTextBoxes();
-                }
-                else
-                {
-                    users.Add(new User { Name = SignUpNameTextBox.Text, Email = SignUpEmailTextBox.Text.ToLower(), PasswordHash = SignUpPasswordBox.Password });
-                    fileManager.CreateNewUser(users);
-                    this.Close();
-                }
+                MessageBox.Show("Email already exists");
+                ResetTextBoxes();
             }
             else
             {
-                PasswordDontMatchText.Visibility = Visibility.Visible;
-                ResetTextBoxes();
+                users.Add(new User { Name = SignUpNameTextBox.Text, Email = SignUpEmailTextBox.Text.ToLower(), PasswordHash = SignUpPasswordBox.Password });
+                fileManager.CreateNewUser(users);
+                this.Close();
             }
         }
-
-        private void SignUpNameTextBox_GotFocus(object sender, RoutedEventArgs e)
+        else
         {
-            PasswordDontMatchText.Visibility = Visibility.Hidden;
+            PasswordDontMatchText.Visibility = Visibility.Visible;
+            ResetTextBoxes();
         }
+    }
 
-        private bool UserExists()
+    private void SignUpNameTextBox_GotFocus(object sender, RoutedEventArgs e)
+    {
+        PasswordDontMatchText.Visibility = Visibility.Hidden;
+    }
+
+    private bool UserExists()
+    {
+        foreach (User user in users)
         {
-            foreach (User user in users)
+            if (user.Email == SignUpEmailTextBox.Text)
             {
-                if (user.Email == SignUpEmailTextBox.Text)
-                {
-                    return true;
-                }
+                return true;
             }
-            return false;
         }
+        return false;
+    }
 
-        private void ResetTextBoxes()
-        {
-            SignUpNameTextBox.Text = string.Empty;
-            SignUpEmailTextBox.Text = string.Empty;
-            SignUpPasswordBox.Password = string.Empty;
-            SignUpConfirmPasswordBox.Password = string.Empty;
-        }
+    private void ResetTextBoxes()
+    {
+        SignUpNameTextBox.Text = string.Empty;
+        SignUpEmailTextBox.Text = string.Empty;
+        SignUpPasswordBox.Password = string.Empty;
+        SignUpConfirmPasswordBox.Password = string.Empty;
     }
 }
